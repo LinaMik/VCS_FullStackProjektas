@@ -1,0 +1,9 @@
+1. Įterpti orą iš api
+2. Padaryti interaktyvų statistikos keitimasi
+3. Padaryti prisitaikanktį prie mobilių įrenginių
+4. Paspaudus ant paslaugos nukreipti į puslapį su aprašymu
+5. Prisijungimas kaip vartotojui ir paslaugų rodymas
+6. Paspaudus el paštą atidaro default pašto programą
+7. footer padaryti rodykle i virsu
+
+<?php echo generate_header_bottom(["ac_unit", "PADANGŲ KEITIMAS"], ["build", "VARIKLIO DARBAI"], ["call", "PAGALBA KELYJE"], ["format_paint", "KĖBULO DAŽYMAS"]) ?> 

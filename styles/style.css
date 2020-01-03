@@ -1,0 +1,262 @@
+/* .container {
+    position: relative;
+} */
+body {
+    box-sizing: border-box; 
+}
+
+.logo {
+    width: 65px;
+    /* border-radius: 50%; */
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h3 {
+    margin: 0 0 0 10px;
+}
+
+.header-img {
+    max-width: 100%;
+    display: block;
+    /* opacity: 0.8; */
+}
+
+.header-top-child {
+    display: flex;
+}
+
+.icons {
+    width: 20px;
+}
+
+.header-top-child h2 {
+    padding: 0px;
+    margin: 0px 0px 0px 10px;
+}
+
+.header-body {
+    position: relative;
+
+} 
+
+.navigation {
+    box-shadow: none;
+}
+
+.header-bottom {
+    display: flex;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -10%;
+}
+
+.header-bottom-child{
+    width:20%;
+    height: 200px;
+    text-align: center;
+    color: white;
+    padding: 20px;
+
+}
+
+span {
+    font-weight: bold;
+}
+
+.service-img {
+    max-width: 100%;
+    display: block;
+}
+
+.row .col {
+    padding: 0;
+}
+
+.row {
+    margin: 0;
+}
+
+.image-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.about-sec {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.about-sec-child {
+    width: 50%;
+    text-align: center;
+}
+
+@media only screen and (max-width:500px) {
+    /* For mobile phones: */
+    .about-sec-child {
+      width: 100%;
+    }
+  }
+
+.about-img {
+    background-image: url("../images/ratu_remontas.jpg"); 
+    opacity: 0.75;
+    background-position: center center;
+    background-size: cover;
+    padding-bottom: 100%;
+}
+
+#about {
+    margin: 30px 0;
+}
+
+#why-us {
+    margin: 30px 0;
+    padding: 30px 0;
+    text-align: center;
+    color: white;
+}
+
+.statistics {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.statistics p {
+    font-weight: bold;
+}
+
+.statistics h3 {
+    color: orange;
+}
+
+#registration {
+    margin: 30px 0;
+}
+
+.registration-form {
+    display: flex;
+    justify-content: space-between;
+}
+
+.registration-form-child {
+    width: 50%;
+    text-align: center;
+}
+
+@media only screen and (max-width:620px) {
+    /* For mobile phones: */
+    
+    .registration-form-child {
+      width:100%;
+    }
+  }
+
+.registration-img {
+    background-color: orange;
+    background-image: url("../images/registracija.jpg");
+    background-position: center center; 
+    background-size: cover; 
+}
+
+.registration-form-child form {
+    padding: 30px;
+    text-align: left;
+}
+
+.registration-form-child .btn {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+form select {
+    display: block;
+}
+
+#services {
+    margin: 30px 0;
+}
+
+ #services h4{
+    box-sizing: border-box;
+    padding: 10px 0;
+    color: white;
+    text-align: center;
+} 
+
+.service-img {
+    opacity: 0.5;
+}
+
+.service-img:hover {
+    opacity: 1;
+}
+
+.srvc-div {
+    position: relative;
+}
+
+.srvc-div h6{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    color:white;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.contact-info-child {
+    width: 50%;
+}
+
+.contacts-address {
+    width: 50%;
+    text-align: left;
+    padding-left: 10%;
+}
+
+/* .contacts-address p, .contacts-address h6 {
+    text-align: left;
+    padding-left: 10%;
+} */
+
+
+.contact-info-child iframe{
+    width: 100%;
+    height: 200px;
+    border: 0;
+}
+
+#contacts {
+    margin: 30px 0;
+}
+
+footer {
+    padding: 30px 0;
+    color: white;
+    text-align: center;
+}
+
+footer a{
+    color: white;
+    
+}
+footer img, footer i {
+    width: 20px;
+    vertical-align: middle;
+}
