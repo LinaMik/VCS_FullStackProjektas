@@ -5,5 +5,9 @@
 5. Prisijungimas kaip vartotojui ir paslaugų rodymas
 6. Paspaudus el paštą atidaro default pašto programą
 7. footer padaryti rodykle i virsu
+8. Naujienu skiltis apie automobilius is keliu puslapiu su uzklausomis 
+9. Animacija
 
-<?php echo generate_header_bottom(["ac_unit", "PADANGŲ KEITIMAS"], ["build", "VARIKLIO DARBAI"], ["call", "PAGALBA KELYJE"], ["format_paint", "KĖBULO DAŽYMAS"]) ?> 
+<a href="mailto:lina.mikelionyte@gmail.com"> </a>
+<a href="tel:+37066297188"> </a>
+

@@ -18,40 +18,7 @@
 
 <body>
 
-    <header>
-        <div class="header-top container">
-            <div class="header-top-child">
-                <i class="medium material-icons">call</i>
-                <h3>+370 699 99999</h3>
-            </div>
-        </div>
-
-        <div class="header-body">
-
-            <div class="blue-grey darken-1">
-                <nav class="container navigation">
-                    <div class="nav-wrapper blue-grey darken-1">
-                        <a href="#" class="brand-logo right"><img class="logo" src="images/logo.png" alt=""></a>
-                        <ul id="nav-mobile" class="left hide-on-med-and-down">
-                            <li><a href="#services">Paslaugos</a> </li>
-                            <li><a href="#contacts">Kontaktai</a></li>
-                            <li><a href="#about">Apie</a></li>
-                            <li><a href="#registration">Registracija</a></li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-
-            <img class="header-img" src="images/header_photo.jpg" alt="">
-
-            <div class="header-body container">
-                <div class="header-bottom">
-                <?php echo generate_header_bottom([["ac_unit", "PADANGŲ KEITIMAS"], ["build", "VARIKLIO DARBAI"], ["call", "PAGALBA KELYJE"], ["format_paint", "KĖBULO DAŽYMAS"]]) ?> 
-                </div>
-            </div>
-        </div>
-
-    </header>
+    <?php include("header.php"); ?>
 
     <section id="about">
         <div class="container about-sec">
@@ -115,7 +82,8 @@
                     <textarea name="problem" id="problem-desc" cols="30" rows="20"></textarea>
 
                     <label for="reg-date-id">Pasirinkite datą: </label>
-                    <input id="reg-date-id" type="date" name="reg-date" value="2020-01-01">
+                    <!-- <input id="reg-date-id" type="date" name="reg-date" value="2020-01-01"> -->
+                    <input type="text" class="datepicker">
 
                     <label for="reg-time-id">Pasirinkite pageidaujamą laiką: </label>
                     <select name="reg-time" id="reg-time-id">
@@ -136,22 +104,22 @@
         </div>
         <div class="row">
             <div class="srvc-div col s12 m3">
-                <a href="#"><img class="service-img" src="images/periodinis_aptarnavimas.jpg" alt=""></a>
+                <a href="annualService.php"><img class="service-img" src="images/periodinis_aptarnavimas.jpg" alt=""></a>
                 <h6>Periodinis aptarnavimas</h6>
             </div>
 
             <div class="srvc-div col s12 m3">
-                <a href="#"><img class="service-img" src="images/ratu_remontas.jpg" alt=""></a>
-                <h6>Ratu remontas</h6>
+                <a href="wheelService.php"><img class="service-img" src="images/wheels.jpg" alt=""></a>
+                <h6>Ratų remontas</h6>
             </div>
 
             <div class="srvc-div col s12 m3">
-                <a href="#"><img class="service-img" src="images/variklio_darbai.jpg" alt=""></a>
+                <a href="engineService.php"><img class="service-img" src="images/variklio_darbai.jpg" alt=""></a>
                 <h6>Variklio darbai</h6>
             </div>
 
             <div class="srvc-div col s12 m3">
-                <a href="#"><img class="service-img" src="images/papildomos_paslaugos.jpg" alt=""></a>
+                <a href="otherServices.php"><img class="service-img" src="images/papildomos_paslaugos.jpg" alt=""></a>
                 <h6>Papildomos paslaugos</h6>
             </div>
         </div>
@@ -176,18 +144,11 @@
         </div>
     </section>
 
-    <footer class="blue-grey darken-1">
-        <div>
-            <a href="https://www.facebook.com/autoservisasaminta/"><img src="images/facebook.png" alt=""> Sekite mus Facebook</a>
-            <i class="small material-icons">call</i> +370 699 99999
-        </div>
-
-
-    </footer>
+    <?php include("footer.php")?>
 
     <!-- Framework iš čia https://materializecss.com/getting-started.html -->
     <!-- Rašyti virš savo js failo, kad mano js failas būtų vėliau ir perrašytų ką reikia -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="scripts/script.js"></script>
 </body>
 
