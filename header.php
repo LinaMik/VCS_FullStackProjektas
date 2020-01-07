@@ -5,23 +5,12 @@
             <h3>+370 699 99999</h3>
         </div>
 
-        <div class="header-top-child">
-            <ul class="collapsible">
-                <div class="collapsible-header">
-                    <a class="connect-icon tooltipped" data-position="bottom" data-tooltip="Prisijungti" href=""><i class="small material-icons">person</i></a>
-                    <a class="connect-word" href="#">Prisijungti</a>
-                </div>
+        <div class="header-top-child connection" id="connection">
 
-                <div class="collapsible-body">
-                    <form action="">
-                        <input type="text" placeholder="Prisijungimo vardas">
-                        <input type="text" placeholder="Slaptažodis">
-                        <button>Prisijungti</button>
-                    </form>
-                </div>
-
-            </ul>
+            <a class="connect-icon" data-position="bottom" data-tooltip="Prisijungti" href=""><i class="small material-icons">person</i></a>
+            <a class="connect-word" href="#">Prisijungti</a>
         </div>
+
     </div>
 
     <div class="header-body">
@@ -29,6 +18,7 @@
         <div class="blue-grey darken-1">
             <nav class="container navigation">
                 <div class="nav-wrapper blue-grey darken-1">
+
                     <a href="index.php#" class="brand-logo right"><img class="logo" src="images/logo.png" alt=""></a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                     <!-- <ul id="nav-mobile" class="left hide-on-med-and-down"> -->
@@ -38,6 +28,15 @@
                         <li><a href="index.php#about">Apie</a></li>
                         <li><a href="index.php#registration">Registracija</a></li>
                     </ul>
+
+                    <div id="connection-form">
+                        <form action="#">
+                            <input type="text" name="vardas" placeholder="Vartotojo vardas arba el. paštas" required>
+                            <input type="text" name="psw" placeholder="Slaptažodis" required>
+                            <button class="btn blue-grey darken-1">Prisijungti</button>
+                        </form>
+                        <a href="connect.php">Naujas vartotojas</a>
+                    </div>
                 </div>
             </nav>
 
@@ -48,6 +47,7 @@
                 <li><a href="#registration">Registracija</a></li>
             </ul>
         </div>
+
 
         <img class="header-img" src="images/header_photo.jpg" alt="">
 

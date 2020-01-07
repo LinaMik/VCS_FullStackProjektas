@@ -41,22 +41,22 @@
 
         <div class="container statistics">
             <div>
-                <h3>20</h3>
+                <h3 id="statistics-animation1">0</h3>
                 <p>metų patirties</p>
             </div>
 
             <div>
-                <h3>520</h3>
+                <h3 id="statistics-animation2">0</h3>
                 <p>patenkintų klientų</p>
             </div>
 
             <div>
-                <h3>750</h3>
+                <h3 id="statistics-animation3">0</h3>
                 <p>suremontuotų automobilių</p>
             </div>
 
             <div>
-                <h3>5</h3>
+                <h3 id="statistics-animation4">0</h3>
                 <p>kvalifikuoti mechanikai</p>
             </div>
         </div>
@@ -149,6 +149,10 @@
     <!-- Framework iš čia https://materializecss.com/getting-started.html -->
     <!-- Rašyti virš savo js failo, kad mano js failas būtų vėliau ir perrašytų ką reikia -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!-- anime.js biblioteka -->
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
+    
     <script src="scripts/script.js"></script>
 </body>
 

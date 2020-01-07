@@ -3,6 +3,10 @@ body {
     box-sizing: border-box; 
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 .logo {
     width: 60px;
 }
@@ -32,9 +36,32 @@ h3 {
 .header-top-child {
     display: flex;
     align-items: center;
-    
 }
 
+.nav-wraper {
+    position: relative;
+}
+
+#connection-form {
+    position: absolute;
+    right: 0;
+    background-color:white;
+    z-index: 999999;
+    border: 2px solid grey;
+    border-radius: 10px;
+    padding: 5px;
+    display:none;
+    opacity: 0.9;
+}
+
+#connection-form.con-on {
+    display: block;
+}
+
+#connection-form a {
+    color: black;
+    text-decoration: underline;
+}
 
 .header-top-child a{
     color: black;
@@ -57,7 +84,6 @@ h3 {
 
 .header-body {
     position: relative;
-
 } 
 
 .navigation {
@@ -268,6 +294,7 @@ form select {
 
 .service-img {
     opacity: 0.5;
+    transition: all 1s;
 }
 
 .service-img:hover {
@@ -335,4 +362,17 @@ footer a{
 footer img, footer i {
     width: 20px;
     vertical-align: middle;
+}
+
+.new-account-div {
+    margin: 20px auto;
+    border-radius: 10px;
+    padding: 10px;
+    border: 2px solid grey;
+}
+
+.new-account-div button{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
 }
