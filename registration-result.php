@@ -18,20 +18,31 @@
 
 <body>
     <a href="index.php#" class="brand-logo"><img class="logo" src="images/logo.png" alt=""></a>
-        <div class="new-account-div container">
-            <h4>NAUJAS VARTOTOJAS:</h4>
-            <form name="new-acc" action="connect.php">
-                <input type="text" name="user-name" placeholder="Vartotojo vardas" maxlength=20 required>
-                <input type="text" name="first-name" placeholder="Vardas">
-                <input type="text" name="last-name" placeholder="Pavardė">
-                <input required type="email" name="e-mail" id="email" placeholder="El.paštas" required>
-                <input type="text" name="phone" placeholder="Telefonas">
-                <input type="password" name="psw" placeholder="Slaptažodis" required>
-                <input type="password" name="psw-2" placeholder="Pakartokite slaptažodį" required>
-                <button id="new-acc-submit" class="btn blue-grey darken-1" onclick="return formosValidacija()">Registruotis</button>
-            </form>
-        </div>
 
+    <?php
+    if (
+        isset($_POST["name"]) &&
+        isset($_POST["email"]) && isset($_POST["phone"]) &&
+        (!empty($_POST["email"]) || !empty($_POST["phone"]))
+    ) {
+        echo "<h4>Jūsų registracija gauta! Susisieksime artimiausiu metu suderinti tikslų laiką!</h4>";
+
+        if (!empty($_POST["email"])) {
+            $to = $_POST["email"];
+            $subject = "Registracija į servisą ";
+            $date = isset($_POST["reg-date"]) ? $_POST["reg-date"] : "";
+
+            $time = isset($_POST["reg-time"]) ? $_POST["reg-time"] : "";
+        
+            $message = "Sveiki, \n patvirtiname, kad gavome Jūsų registraciją į servisą " . $date . " datai " . $time . " valandai.";
+            // $message = "Sveiki, \n patvirtiname, kad gavome Jūsų registraciją į servisą " . $date . " datai ";
+            // mail($to, $subject, $message);
+            echo "<p>" . $message . "</p>";
+            echo "<p>Jums išsiųstas laiškas adresu: " . $to . "</p>";
+        }
+    }
+
+    ?>
 
     <?php include("footer.php") ?>
 

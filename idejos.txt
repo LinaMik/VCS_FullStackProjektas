@@ -1,5 +1,5 @@
 1. Įterpti orą iš api
-2. Padaryti interaktyvų statistikos keitimasi
+2. PADARYTA Padaryti interaktyvų statistikos keitimasi
 3. PADARYTA Padaryti prisitaikanktį prie mobilių įrenginių 
 4. PADARYTA  Paspaudus ant paslaugos nukreipti į puslapį su aprašymu
 5. Prisijungimas kaip vartotojui ir paslaugų rodymas
@@ -19,4 +19,8 @@ klausimai:
 2. paspaudus ant ikonos neparodo formos?
 3. Formos validacija - ar gerai irasyti funkciją tiesiog onclick?
 4. Kaip su slaptažodžiu?
+5. Kai forma submitinta kaip išmesti pranešimą ačiū?
+6. Kodel registracija uzrasas toks didelis tarpas, nors nera marginu?
+7. JEIGU PRISEGI SCRIPT FAIL1 PRIE PSL KURIAME NERA TOKIU ELEMTU, TAI META ERROR?
+8. Laikas - kodėl intervalas vsivien eina kaip jis nori?
 

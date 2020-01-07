@@ -53,8 +53,12 @@ document.addEventListener('DOMContentLoaded', function () {
   var instances = M.Sidenav.init(elems);
 
   //Datos pasirinkimas formoje
+  // Neleidziama pasirinkti atgalines datos registracijai
+  let today = new Date();
+  let date = today.toJSON().slice(0, 10);
+
   var date_pic = document.querySelectorAll('.datepicker');
-  var instance2 = M.Datepicker.init(date_pic, { format: "yyyy mm dd", autoClose: true });
+  var instance2 = M.Datepicker.init(date_pic, { format: "yyyy mm dd", autoClose: true, disableWeekends: true, minDate: today });
 
 });
 
@@ -157,12 +161,25 @@ let abou_sec = document.getElementById("about").addEventListener("mouseover", fu
 
 let con_btn = document.getElementById("connection")
 
-con_btn.addEventListener("click", function(){
-  let elem = document.getElementById("connection-form") 
-    if (elem.classList.contains("con-on")) {
-      elem.setAttribute("class", "");
-    } else {
-      elem.setAttribute("class", "con-on");
-    }
+con_btn.addEventListener("click", function () {
+  let elem = document.getElementById("connection-form")
+  if (elem.classList.contains("con-on")) {
+    elem.setAttribute("class", "");
+  } else {
+    elem.setAttribute("class", "con-on");
+  }
 });
 
+/////////////////////////////////////////
+///Registracijos validacija
+
+function registracijosValidacija() {
+  let phone = document.forms["reg-form"]["phone"].value;
+  let email = document.forms["reg-form"]["email"].value;
+
+  if (phone === "" && email === "") {
+    alert("Įveskite telefono numerį arba el. paštą!");
+    return false;
+  }
+  return true;
+}

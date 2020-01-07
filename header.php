@@ -35,7 +35,7 @@
                             <input type="text" name="psw" placeholder="Slaptažodis" required>
                             <button class="btn blue-grey darken-1">Prisijungti</button>
                         </form>
-                        <a href="connect.php">Naujas vartotojas</a>
+                        <a href="new-account.php">Naujas vartotojas</a>
                     </div>
                 </div>
             </nav>

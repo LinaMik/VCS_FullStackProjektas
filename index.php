@@ -67,10 +67,9 @@
         <div class="registration-form container">
             <div class="registration-form-child">
                 <h4>REGISTRACIJA</h4>
-                <form action="#">
-                    <input type="text" name="first-name" placeholder="Vardas...">
-                    <input type="text" name="last-name" placeholder="Pavardė...">
-                    <input required type="email" name="e-mail" id="email" placeholder="El.paštas...">
+                <form name="reg-form" action="registration-result.php" method="post">
+                    <input type="text" name="name" placeholder="Vardas..." required>
+                    <input type="email" name="email" id="email" placeholder="El.paštas...">
                     <input type="text" name="phone" placeholder="Telefonas...">
 
                     <label for="select-service">Pasirinkite paslaugą: </label>
@@ -82,15 +81,14 @@
                     <textarea name="problem" id="problem-desc" cols="30" rows="20"></textarea>
 
                     <label for="reg-date-id">Pasirinkite datą: </label>
-                    <!-- <input id="reg-date-id" type="date" name="reg-date" value="2020-01-01"> -->
-                    <input type="text" class="datepicker">
+                    <input type="text" name="reg-date" class="datepicker">
 
                     <label for="reg-time-id">Pasirinkite pageidaujamą laiką: </label>
                     <select name="reg-time" id="reg-time-id">
                         <?php echo generate_select_list($valandu_sarasas) ?>
                     </select>
                     <br>
-                    <button id="btn-submit" class="btn blue-grey darken-1">Registruotis</button>
+                    <button id="btn-submit" class="btn blue-grey darken-1" onclick="return registracijosValidacija()">Registruotis</button>
                 </form>
             </div>
             <div class="registration-form-child registration-img">
@@ -152,7 +150,7 @@
 
     <!-- anime.js biblioteka -->
     <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
-    
+
     <script src="scripts/script.js"></script>
 </body>
 
