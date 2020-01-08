@@ -1,23 +1,16 @@
 1. Įterpti orą iš api
-2. PADARYTA Padaryti interaktyvų statistikos keitimasi
-3. PADARYTA Padaryti prisitaikanktį prie mobilių įrenginių 
-4. PADARYTA  Paspaudus ant paslaugos nukreipti į puslapį su aprašymu
-5. Prisijungimas kaip vartotojui ir paslaugų rodymas
-6. PADARYTA Paspaudus el paštą atidaro default pašto programą
-7. PADARYTA footer padaryti rodykle i virsu
-8. Naujienu skiltis apie automobilius is keliu puslapiu su uzklausomis 
-9. Animacija
+2. Prisijungimas kaip vartotojui ir paslaugų rodymas
+3. Naujienu skiltis apie automobilius is keliu puslapiu su uzklausomis 
+4. Animacija - su anime.js
+5. Kainu lentle su css grid
+6. Duomenu baziu lentele - imones parametrai su telefonu, adresu, informacija apie mus.
+7. Paslaugų lentelė.
+8. Registracijos patvirtinimas su laiško išsiuntimu
 
-<a href="mailto:lina.mikelionyte@gmail.com"> </a>
-<a href="tel:+37066297188"> </a>
-
-
-css grid
 
 klausimai:
 
 3. Formos validacija - ar gerai irasyti funkciją tiesiog onclick? form submit
 4. Kaip su slaptažodžiu?
-5. Kai forma submitinta kaip išmesti pranešimą ačiū? //
-8. Laikas - kodėl intervalas vsivien eina kaip jis nori?
+
 

@@ -31,25 +31,7 @@
         </div>
 
         <div class="container statistics">
-            <div>
-                <h3 id="statistics-animation1">0</h3>
-                <p>metų patirties</p>
-            </div>
-
-            <div>
-                <h3 id="statistics-animation2">0</h3>
-                <p>patenkintų klientų</p>
-            </div>
-
-            <div>
-                <h3 id="statistics-animation3">0</h3>
-                <p>suremontuotų automobilių</p>
-            </div>
-
-            <div>
-                <h3 id="statistics-animation4">0</h3>
-                <p>kvalifikuoti mechanikai</p>
-            </div>
+            <?php echo generate_stat_div($stat_indicators); ?>
         </div>
 
     </section>

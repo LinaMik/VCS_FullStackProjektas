@@ -52,6 +52,23 @@ function generate_select_list($masyvas)
     return $list;
 }
 
+// Funkcija generuojanti statistikos div'us
+$stat_indicators = ["metų patirties", "patenkintų klientų", "suremontuotų automobilių", "kvalifikuoti mechanikai"];
+
+function generate_stat_div($masyvas)
+{
+    $list = "";
+    for ($i = 0; $i < count($masyvas); $i++) {
+        $list .= '<div>
+                <h3 id="statistics-animation'.($i+1).'">0</h3>
+                <p>' . $masyvas[$i] . '</p>
+                </div>';
+        
+    }
+
+    return $list;
+}
+
 //Funkcija generuojanti paslaugu sarasa su nuotraukomis
 function generate_services_list()
 {
