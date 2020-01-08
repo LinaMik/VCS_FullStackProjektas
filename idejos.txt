@@ -15,12 +15,9 @@
 css grid
 
 klausimai:
-1. del animacijo. Kodel neveikia pastoviai?
-2. paspaudus ant ikonos neparodo formos?
-3. Formos validacija - ar gerai irasyti funkciją tiesiog onclick?
+
+3. Formos validacija - ar gerai irasyti funkciją tiesiog onclick? form submit
 4. Kaip su slaptažodžiu?
-5. Kai forma submitinta kaip išmesti pranešimą ačiū?
-6. Kodel registracija uzrasas toks didelis tarpas, nors nera marginu?
-7. JEIGU PRISEGI SCRIPT FAIL1 PRIE PSL KURIAME NERA TOKIU ELEMTU, TAI META ERROR?
+5. Kai forma submitinta kaip išmesti pranešimą ačiū? //
 8. Laikas - kodėl intervalas vsivien eina kaip jis nori?
 

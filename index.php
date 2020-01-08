@@ -1,20 +1,11 @@
-<?php include("functions.php") ?>
+<?php include("functions.php");
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="lt">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Automobilių servisas</title>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <!-- ikonos -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="styles/style.css">
-
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
-</head>
+<?php include("head.php") ?>
 
 <body>
 
@@ -23,11 +14,11 @@
     <section id="about">
         <div class="container about-sec">
 
-            <div class="about-sec-child image-wrapper">
+            <div class="about-sec-child from-left image-wrapper">
                 <div class="about-img"></div>
             </div>
 
-            <div class="about-sec-child">
+            <div class="about-sec-child from-right">
                 <h4>APIE MUS</h4>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora sapiente voluptatum sit ipsa nostrum incidunt fugit inventore velit, vel accusamus alias vero, facere facilis tempore unde illum, quaerat dicta doloribus.</p>
             </div>
@@ -101,25 +92,7 @@
             <h4>Teikiame įvairias paslaugas</h4>
         </div>
         <div class="row">
-            <div class="srvc-div col s12 m3">
-                <a href="annualService.php"><img class="service-img" src="images/periodinis_aptarnavimas.jpg" alt=""></a>
-                <h6>Periodinis aptarnavimas</h6>
-            </div>
-
-            <div class="srvc-div col s12 m3">
-                <a href="wheelService.php"><img class="service-img" src="images/wheels.jpg" alt=""></a>
-                <h6>Ratų remontas</h6>
-            </div>
-
-            <div class="srvc-div col s12 m3">
-                <a href="engineService.php"><img class="service-img" src="images/variklio_darbai.jpg" alt=""></a>
-                <h6>Variklio darbai</h6>
-            </div>
-
-            <div class="srvc-div col s12 m3">
-                <a href="otherServices.php"><img class="service-img" src="images/papildomos_paslaugos.jpg" alt=""></a>
-                <h6>Papildomos paslaugos</h6>
-            </div>
+            <?php echo generate_services_list() ?>
         </div>
 
     </section>

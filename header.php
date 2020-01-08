@@ -6,14 +6,15 @@
         </div>
 
         <div class="header-top-child connection" id="connection">
-
-            <a class="connect-icon" data-position="bottom" data-tooltip="Prisijungti" href=""><i class="small material-icons">person</i></a>
-            <a class="connect-word" href="#">Prisijungti</a>
+            <i class="small material-icons">person</i>
+            <!-- <a class="connect-icon" data-position="bottom" data-tooltip="Prisijungti" href=""><i class="small material-icons">person</i></a> -->
+            <!-- <a class="connect-word" href="#">Prisijungti</a> -->
+            <p class="connect-word">Prisijungti</p>
         </div>
 
     </div>
 
-    <div class="header-body">
+    <div class="header-body" id="header-body">
 
         <div class="blue-grey darken-1">
             <nav class="container navigation">
@@ -34,8 +35,8 @@
                             <input type="text" name="vardas" placeholder="Vartotojo vardas arba el. paštas" required>
                             <input type="text" name="psw" placeholder="Slaptažodis" required>
                             <button class="btn blue-grey darken-1">Prisijungti</button>
+                            <a href="new-account.php">Naujas vartotojas</a>
                         </form>
-                        <a href="new-account.php">Naujas vartotojas</a>
                     </div>
                 </div>
             </nav>
