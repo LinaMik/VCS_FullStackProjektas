@@ -31,9 +31,9 @@
                     </ul>
 
                     <div id="connection-form">
-                        <form action="#">
-                            <input type="text" name="vardas" placeholder="Vartotojo vardas arba el. paštas" required>
-                            <input type="text" name="psw" placeholder="Slaptažodis" required>
+                        <form id="connect" name="connect" action="#">
+                            <input type="text" name="name" placeholder="Vartotojo vardas arba el. paštas" required>
+                            <input type="password" name="psw" placeholder="Slaptažodis" required>
                             <button class="btn blue-grey darken-1">Prisijungti</button>
                             <a href="new-account.php">Naujas vartotojas</a>
                         </form>

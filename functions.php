@@ -1,5 +1,4 @@
 <?php
-include("head.php");
 // Generuojami div elementai hederio apacioje
 function generate_header_bottom($masyvas)
 {
@@ -16,14 +15,17 @@ function generate_header_bottom($masyvas)
 }
 
 // Select sarasams sugeneruojami masyvai
-$pas1 = ["", ""];
-$pas2 = ["kasmetine-patikra", "Kasmetinė patikra"];
-$pas3 = ["padangu-keitimas", "Padangų keitimas"];
-$pas4 = ["tepalu-keitimas", "Tepalų keitimas"];
-$pas5 = ["variklio-darbai", "Variklio darbai"];
-$pas6 = ["kebulo-darbai", "Kėbulo darbai"];
-$pas7 = ["kita", "Kita"];
-$paslaugu_sarasas = [$pas1, $pas2, $pas3, $pas4, $pas5, $pas6, $pas7];
+
+$sql = "SELECT * FROM products";
+$result = mysqli_query($conn, $sql);
+$paslaugu_sarasas = [["", ""]];
+
+if (mysqli_num_rows($result) > 0) {
+    while($row = mysqli_fetch_assoc($result)) {
+        $elem = [$row["id"], $row["name"]];
+        array_push($paslaugu_sarasas, $elem);
+    }
+}
 
 $val0 = ["", ""];
 $val1 = ["9", "9:00"];
@@ -70,10 +72,11 @@ function generate_stat_div($masyvas)
 }
 
 //Funkcija generuojanti paslaugu sarasa su nuotraukomis
-function generate_services_list()
+function generate_services_list($conn)
 {
     $sql = "SELECT * FROM services";
-    $result = mysqli_query($_SESSION["connection-id"], $sql);
+    // $result = mysqli_query($_SESSION["connection-id"], $sql);
+    $result = mysqli_query($conn, $sql);
     $list = "";
 
     if (mysqli_num_rows($result) > 0) {
@@ -86,3 +89,5 @@ function generate_services_list()
     }
     return $list;
 }
+
+

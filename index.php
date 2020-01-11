@@ -1,11 +1,11 @@
-<?php include("functions.php");
-    session_start();
-?>
-
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="lt">
 
-<?php include("head.php") ?>
+<?php 
+include("head.php"); 
+
+?>
 
 <body>
 
@@ -40,10 +40,10 @@
         <div class="registration-form container">
             <div class="registration-form-child">
                 <h4>REGISTRACIJA</h4>
-                <form name="reg-form" action="registration-result.php" method="post">
+                <form name="reg-form" id="reg-form">
                     <input type="text" name="name" placeholder="Vardas..." required>
-                    <input type="email" name="email" id="email" placeholder="El.paštas...">
-                    <input type="text" name="phone" placeholder="Telefonas...">
+                    <input type="email" name="email" id="email" placeholder="El.paštas..." required>
+                    <input type="text" name="phone" placeholder="Telefonas..." required>
 
                     <label for="select-service">Pasirinkite paslaugą: </label>
                     <select required name="service" id="select-service">
@@ -61,7 +61,7 @@
                         <?php echo generate_select_list($valandu_sarasas) ?>
                     </select>
                     <br>
-                    <button id="btn-submit" class="btn blue-grey darken-1" onclick="return registracijosValidacija()">Registruotis</button>
+                    <button id="btn-submit" class="btn blue-grey darken-1">Registruotis</button>
                 </form>
             </div>
             <div class="registration-form-child registration-img">
@@ -74,7 +74,7 @@
             <h4>Teikiame įvairias paslaugas</h4>
         </div>
         <div class="row">
-            <?php echo generate_services_list() ?>
+            <?php echo generate_services_list($conn) ?>
         </div>
 
     </section>

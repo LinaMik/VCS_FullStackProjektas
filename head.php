@@ -9,20 +9,10 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles/style.css">
 
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <?php
-    $server = "localhost";
-    $user = "root";
-    $psw = "";
-    $db = "servisas";
-
-    $conn = mysqli_connect($server, $user, $psw, $db);
-   
-
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
-        $_SESSION["connection-id"] =  $conn;
+    include("db_connection.php");
+    include("functions.php");
     ?>
 </head>

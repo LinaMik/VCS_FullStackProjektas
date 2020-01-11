@@ -365,6 +365,7 @@ footer img, footer i {
 }
 
 .new-account-div {
+    width: 50%;
     margin: 20px auto;
     border-radius: 10px;
     padding: 10px;
@@ -392,4 +393,13 @@ footer img, footer i {
 .visible .from-left, .visible .from-right {
     transform: translateX(0);
     opacity: 1;
+}
+
+.hide-form {
+    display: none;
+}
+
+#new-acc-created {
+    color: green;
+    font-size: 32px;
 }

@@ -36,14 +36,15 @@ if (document.forms["reg-form"]) {
 // Registracijos FormData. Laukas - aprasymas, atsiranda, tik jei pasirenkama paslauga "Kita"
 if (document.getElementById("problem-desc")) {
   let desc = document.getElementById("problem-desc");
-  console.log(desc);
+
   desc.style.display = "none";
   let descLbl = document.getElementById("problem-desc-lbl");
   descLbl.style.display = "none";
 
   let selectService = document.getElementById("select-service");
   selectService.addEventListener("change", function (e) {
-    if (e.target.value === "kita") {
+
+    if (e.target.value === "7") {
       desc.style.display = "block";
       descLbl.style.display = "block";
     } else {
@@ -54,17 +55,47 @@ if (document.getElementById("problem-desc")) {
 };
 ///Registracijos validacija
 
-function registracijosValidacija() {
-  let phone = document.forms["reg-form"]["phone"].value;
-  let email = document.forms["reg-form"]["email"].value;
+if (document.getElementById("reg-form")) {
+  document.getElementById("reg-form").addEventListener("submit", function (event) {
+    let email = document.forms["reg-form"]["email"].value;
 
-  if (phone === "" && email === "") {
-    alert("Įveskite telefono numerį arba el. paštą!");
-    return false;
-  }
-  return true;
+    if (email === "") {
+      alert("Įveskite el. paštą!");
+      return false;
+    }
+
+    event.preventDefault();
+
+    let data = $(this).serialize();
+    $.post("registration-result.php", data, function (result) {
+
+      switch (result) {
+        case ("user_exists"):
+          alert("Toks vartotojo vardas ar el.paštas jau egzistuoja!");
+          break;
+
+        case ("user_insert"):
+          $("#new-acc-form").addClass("hide-form");
+          $("#new-acc-created").text("SUKURTAS");
+          break;
+
+        case ("db_error"):
+          alert("Nepavyko pasiekti duomenų bazės! Bandykite vėliau.");
+          break;
+        case ("wrong_email"):
+          alert("Blogas pašto adresas!");
+          break;
+        case ("missing_data"):
+          alert("Trūksta duomenų!");
+          break;
+
+        default:
+          alert("Kažkas blogai!");
+      }
+
+    })
+  })
 }
-
 
 /////////////////////////////////////////////////////
 //               STATISTIKOS ANIMACIJA
@@ -164,34 +195,127 @@ if (document.getElementById("connection")) {
 
 
 ////Naujo vartotojo registracija
+if (document.getElementById("new-acc-form")) {
+  document.getElementById("new-acc-form").addEventListener("submit", function (event) {
 
-function formosValidacija() {
-  //Slaptažodžio tikrinimas
-  let psw1 = document.forms["new-acc"]["psw"].value;
-  let psw2 = document.forms["new-acc"]["psw-2"].value;
+    event.preventDefault();
 
-  if (psw1 !== psw2 || psw1 === "") {
-    alert("Nesutampa slaptažodis!");
-    return false;
-  }
+    //Slaptažodžio tikrinimas
+    let psw1 = document.forms["new-acc"]["psw"].value;
+    let psw2 = document.forms["new-acc"]["psw-2"].value;
 
-  if (psw1.length < 9) {
-    alert("Slaptažodis turi talpinti bent 8 simbolius!");
-    return false;
-  }
-
-  let containNumber = false;
-  for (let i = 0; i < 10; i++) {
-    containNumber = psw1.includes("" + i);
-    if (containNumber) {
-      containNumber = true;
-      break;
+    if (psw1 !== psw2 || psw1 === "") {
+      alert("Nesutampa slaptažodis!");
+      return false;
     }
-  }
 
-  if (!containNumber) {
-    alert("Slaptažodis turi talpinti bent vieną skaičių!");
-    return false;
-  }
+    if (psw1.length < 9) {
+      alert("Slaptažodis turi talpinti bent 8 simbolius!");
+      return false;
+    }
 
+    let containNumber = false;
+    for (let i = 0; i < 10; i++) {
+      containNumber = psw1.includes("" + i);
+      if (containNumber) {
+        containNumber = true;
+        break;
+      }
+    }
+
+    if (!containNumber) {
+      alert("Slaptažodis turi talpinti bent vieną skaičių!");
+      return false;
+    }
+
+    let data = $(this).serialize();
+    $.post("new-account-result.php", data, function (result) {
+      console.log(result);
+      switch (result) {
+        case ("user_exists"):
+          alert("Toks vartotojo vardas ar el.paštas jau egzistuoja!");
+          break;
+
+        case ("user_insert"):
+          $("#new-acc-form").addClass("hide-form");
+          $("#new-acc-created").text("SUKURTAS");
+          break;
+
+        case ("db_error"):
+          alert("Nepavyko pasiekti duomenų bazės! Bandykite vėliau.");
+          break;
+        case ("wrong_email"):
+          alert("Blogas pašto adresas!");
+          break;
+        case ("missing_data"):
+          alert("Trūksta duomenų!");
+          break;
+
+        default:
+          alert("Kažkas blogai!");
+      }
+
+
+    })
+
+  })
 }
+
+//////////////////////////////////////////////////////////////////
+//PRISIJUNGIMAS
+
+if (document.getElementById("connect")) {
+  document.getElementById("connect").addEventListener("submit", function (event) {
+
+    event.preventDefault();
+
+    //Slaptažodžio tikrinimas
+    let name = document.forms["connect"]["name"].value;
+    let psw = document.forms["connect"]["psw"].value;
+
+    if (psw === "" || name === "") {
+      alert("Nurodykite ir vartotojo vardą ir slaptažodį!");
+      return false;
+    }
+
+    let data = $(this).serialize();
+    $.post("connection.php", data, function (result) {
+      console.log(result);
+      switch (result) {
+        case ("connected"):
+          window.location.href = "user_page.php";
+          break;
+
+        case ("wrong_user"):
+          alert("Tokio vartotojo nėra!");
+          break;
+
+        case ("missing_data"):
+          alert("Įveskite vartotojo vardą ir slaptažodį!");
+          break;
+
+        default:
+          alert("Kažkas blogai");
+      }
+
+
+    })
+
+  })
+}
+
+//////////////////////////////////////////////////////////////////
+// API - Naujienos
+
+let url = 'https://newsapi.org/v2/everything?' +
+  'country=lt&' +
+  'q=auto&' +
+  'from=2020-01-09&' +
+  'sortBy=popularity&' +
+  'apiKey=b7e6cd453576479e954b8d80af83b405';
+
+// let url = "https://newsapi.org/v2/top-headlines?country=lt&category=technology&apiKey=b7e6cd453576479e954b8d80af83b405"
+
+// $.get(url, function(data){
+//   console.log(data);
+// });

@@ -1,4 +1,4 @@
-<?php include("functions.php") ?>
+
 <!DOCTYPE html>
 <html lang="lt">
 
@@ -19,12 +19,12 @@
 
                 $sql = "SELECT * FROM services WHERE id = $id";
 
-                $result = mysqli_query($_SESSION["connection-id"], $sql);
+                $result = mysqli_query($conn, $sql);
 
                 if (mysqli_num_rows($result) > 0) {
                     $row = mysqli_fetch_assoc($result);
                     echo '<div class="about-sec-child image-wrapper">';
-                    echo '<div class="' . $row["img_class"] . '"></div>';
+                    echo '<div  class="' . $row["img_class"] . '"></div>';
                     echo "</div>";
                     echo '<div class="about-sec-child"> ';
                     echo "<h4>" . $row["title"] . "</h4>";
