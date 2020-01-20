@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html lang="lt">
 
-<?php 
-include("head.php"); 
+<?php
+include("head.php");
 
 ?>
 
@@ -20,7 +20,16 @@ include("head.php");
 
             <div class="about-sec-child from-right">
                 <h4>APIE MUS</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora sapiente voluptatum sit ipsa nostrum incidunt fugit inventore velit, vel accusamus alias vero, facere facilis tempore unde illum, quaerat dicta doloribus.</p>
+                <?php
+                $sql = "SELECT * FROM parameters where name = 'company_about'";
+                $result = mysqli_query($conn, $sql);
+                if (mysqli_num_rows($result) > 0) {
+                    $row = mysqli_fetch_assoc($result);
+                    // echo '<div class="col s6 m4"><a href="tel:' . $row[" value"]. '"><i class="small material-icons">call</i>' . $row["value"] . '</a></div>' ; } 
+                    echo '<p>' . $row["value"] . '</p>';
+                }
+                ?>
+                
             </div>
         </div>
     </section>
@@ -87,17 +96,46 @@ include("head.php");
 
             <div class="contact-info-child contacts-address">
                 <h4>KONTAKTAI</h4>
-                <h6>UAB Aminta autoservisas</h6>
-                <p>Įmonės kodas: 300001236 <br>
-                    Adresas: Naugarduko g. 97, Vilnius, LT-03202 <br>
-                    Telefonas: +370 699 99999 <br>
-                    El. paštas: info@aminta.lt <br>
-                </p>
+                <?php
+                $sql = "SELECT * FROM parameters where name = 'company_name'";
+                $result = mysqli_query($conn, $sql);
+                if (mysqli_num_rows($result) > 0) {
+                    $row = mysqli_fetch_assoc($result);
+                    echo "<h6>" . trim($row["value"]) . "</h6>";
+                }
+
+
+                $param1 = ["company_code", "Įmonės kodas: "];
+                $param2 = ["company_address", "Adresas: "];
+                $param3 = ["company_phone", "Telefonas: "];
+                $param4 = ["company_email", "El. paštas: "];
+
+                $parameters = [$param1, $param2, $param3, $param4];
+
+                echo "<p>";
+                for ($i = 0; $i < count($parameters); $i++) {
+                    $sql = "SELECT * FROM parameters where name = '" . $parameters[$i][0] . "'";
+                    $result = mysqli_query($conn, $sql);
+                    if (mysqli_num_rows($result) > 0) {
+                        $row = mysqli_fetch_assoc($result);
+                        echo $parameters[$i][1] . trim($row["value"]) . "<br>";
+                    }
+                }
+
+
+
+                // echo "<p>Įmonės kodas: 300001236 <br>
+                //     Adresas: Naugarduko g. 97, Vilnius, LT-03202 <br>
+                //     Telefonas: +370 699 99999 <br>
+                //     El. paštas: info@aminta.lt <br>
+                // </p>";
+                echo "</p>";
+                ?>
             </div>
         </div>
     </section>
 
-    <?php include("footer.php")?>
+    <?php include("footer.php") ?>
 
     <!-- Framework iš čia https://materializecss.com/getting-started.html -->
     <!-- Rašyti virš savo js failo, kad mano js failas būtų vėliau ir perrašytų ką reikia -->

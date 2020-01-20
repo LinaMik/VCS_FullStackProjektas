@@ -359,9 +359,10 @@ footer a{
     color: white;
     
 }
-footer img, footer i {
+footer img, footer i.small {
     width: 20px;
     vertical-align: middle;
+    margin-right: 9px;
 }
 
 .new-account-div {
@@ -370,6 +371,18 @@ footer img, footer i {
     border-radius: 10px;
     padding: 10px;
     border: 2px solid grey;
+}
+
+@media only screen and (max-width: 993px) {
+    .new-account-div{
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width: 601px) {
+    .new-account-div{
+        width: 85%;
+    }
 }
 
 .new-account-div button{
@@ -403,3 +416,15 @@ footer img, footer i {
     color: green;
     font-size: 32px;
 }
+
+#admin-table-select {
+    display: block;
+}
+
+.admin-btn {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+

@@ -5,35 +5,20 @@
 <?php include("head.php"); ?>
 
 <body>
-
-
-
     <section>
         <div class="container">
 
             <?php
-
+            
             if (isset($_SESSION["first_name"])) {
                 if ($_SESSION["role"] === "admin") {
-                    // $id = trim($_GET["id"]);
-
-                    // $sql = "SELECT * FROM services WHERE id = $id";
-
-                    // $result = mysqli_query($conn, $sql);
-
-                    // if (mysqli_num_rows($result) > 0) {
-                    //     $row = mysqli_fetch_assoc($result);
-                    //     echo '<div class="about-sec-child image-wrapper">';
-                    //     echo '<div  class="' . $row["img_class"] . '"></div>';
-                    //     echo "</div>";
-                    //     echo '<div class="about-sec-child"> ';
-                    //     echo "<h4>" . $row["title"] . "</h4>";
-                    //     echo "<p>" . $row["content"] . "</p>";
-                    //     echo "</div>";
+                    echo "<h3>Sveikinu prisijungus, " . $_SESSION["first_name"] . "!</h3><br>";
+                    include("admin_page.php");
 
                 } else {
+                    
                     echo "<h3>Sveikinu prisijungus, " . $_SESSION["first_name"] . "!</h3><br>";
-
+                    
                     //atlikti darbai
                     $user = $_SESSION["user_name"];
                     $sql = "SELECT works.product_id, works.user_id, works.date, 

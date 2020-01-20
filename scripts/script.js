@@ -20,19 +20,19 @@ document.addEventListener('DOMContentLoaded', function () {
 //         PASLAUGOS REGISTRACIJOS FORMA
 
 // Negalima pasirinkti laiko, kuris praėjo
-if (document.forms["reg-form"]) {
-  let date = document.forms["reg-form"]["reg-date"];
+// if (document.forms["reg-form"]) {
+//   let date = document.forms["reg-form"]["reg-date"];
 
-  date.addEventListener("change", function () {
-    let today = new Date();
-    let today_date = today.toJSON().slice(0, 10);
-    if (date.value === today_date) {
-      let timeOptions = document.forms["reg-form"]["reg-time"];
-      // console.log(timeOptions.value);
-    }
+//   date.addEventListener("change", function () {
+//     let today = new Date();
+//     let today_date = today.toJSON().slice(0, 10);
+//     if (date.value === today_date) {
+//       let timeOptions = document.forms["reg-form"]["reg-time"];
+//       // console.log(timeOptions.value);
+//     }
 
-  });
-};
+//   });
+// };
 // Registracijos FormData. Laukas - aprasymas, atsiranda, tik jei pasirenkama paslauga "Kita"
 if (document.getElementById("problem-desc")) {
   let desc = document.getElementById("problem-desc");
@@ -68,23 +68,21 @@ if (document.getElementById("reg-form")) {
 
     let data = $(this).serialize();
     $.post("registration-result.php", data, function (result) {
-
+     
       switch (result) {
-        case ("user_exists"):
-          alert("Toks vartotojo vardas ar el.paštas jau egzistuoja!");
-          break;
-
-        case ("user_insert"):
-          $("#new-acc-form").addClass("hide-form");
-          $("#new-acc-created").text("SUKURTAS");
+        case ("success"):
+          alert("Jūsų registracija sėkminga!");
+          document.getElementById("reg-form").reset();
           break;
 
         case ("db_error"):
           alert("Nepavyko pasiekti duomenų bazės! Bandykite vėliau.");
           break;
+
         case ("wrong_email"):
           alert("Blogas pašto adresas!");
           break;
+
         case ("missing_data"):
           alert("Trūksta duomenų!");
           break;
@@ -230,7 +228,7 @@ if (document.getElementById("new-acc-form")) {
 
     let data = $(this).serialize();
     $.post("new-account-result.php", data, function (result) {
-      console.log(result);
+      
       switch (result) {
         case ("user_exists"):
           alert("Toks vartotojo vardas ar el.paštas jau egzistuoja!");
@@ -280,7 +278,7 @@ if (document.getElementById("connect")) {
 
     let data = $(this).serialize();
     $.post("connection.php", data, function (result) {
-      console.log(result);
+     
       switch (result) {
         case ("connected"):
           window.location.href = "user_page.php";
@@ -319,3 +317,74 @@ let url = 'https://newsapi.org/v2/everything?' +
 // $.get(url, function(data){
 //   console.log(data);
 // });
+
+///////////////////////////////////////////////////////////////////
+//// ADMIN PUSLAPIS - LENTELIU KOREGAVIMAS
+
+if (document.getElementById("admin-table-select")) {
+  let adminBtn = document.getElementById("admin-btn");
+
+  adminBtn.style.display = "none";
+
+  let selectTable = document.getElementById("admin-table-select");
+  selectTable.addEventListener("change", function (e) {
+
+    if (e.target.value === "") {
+      adminBtn.style.display = "none";
+    } else {
+      adminBtn.style.display = "flex";
+    }
+  });
+};
+
+if (document.getElementById("admin-btn-add")) {
+  document.getElementById("admin-btn-add").addEventListener("click", function(){
+    let addForm = document.getElementById("admin-add-div");
+
+    if(addForm.classList.contains("hide-form")){
+      addForm.setAttribute("class"," ");
+      let tableName = document.getElementById("admin-table-select").value;
+      let data ="?table-name=" + tableName;
+      console.log(data);
+      $.post("admin_page.php", data);
+    } else {
+      addForm.setAttribute("class","hide-form");
+    }
+
+  });
+};
+
+//iraso pridejimas
+if (document.getElementById("form-add-row")) {
+  document.getElementById("form-add-row").addEventListener("submit", function (event) {
+
+    event.preventDefault();
+    let tableName = document.getElementById("admin-table-select").value;
+    
+    let data = $(this).serialize();
+    data +="&table-action=add&table-name=" + tableName;
+    $.post("admin-result.php", data, function (result) {
+     
+      switch (result) {
+        case ("success"):
+          alert("Naujas įrašas pridėtas!");
+          document.getElementById("form-add-row").reset();
+          break;
+
+        case ("db_error"):
+          alert("Nepavyko pasiekti duomenų bazės! Bandykite dar kartą");
+          break;
+
+        case ("missing_data"):
+          alert("Užpildykite visus laukus!");
+          break;
+
+        default:
+          alert(result);
+      }
+
+    })
+
+  })
+}
+

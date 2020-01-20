@@ -4,9 +4,6 @@
 4. Animacija - su anime.js
 5. Kainu lentle su css grid
 6. Duomenu baziu lentele - imones parametrai su telefonu, adresu, informacija apie mus.
-7. Paslaugų lentelė.
-8. Registracijos patvirtinimas su laiško išsiuntimu
-
 
 ADMIN puslapis - ideti turinio valdyma - keisti, prideti, atnaujinti kintamuosius.
 Galimybe pakeisti paveikslelis. Galima style atributa prideti.
@@ -18,7 +15,7 @@ computer sciencie 50, hardavrd universiteto programa - pasimokymui
 klausimai:
 
 3. Formos validacija - ar gerai irasyti funkciją tiesiog onclick? form submit
-4. Kaip su slaptažodžiu?
+4. kaip su sesija, kada uždaryti, kai vartotojas prisijunges?
 
 
 api key: b7e6cd453576479e954b8d80af83b405

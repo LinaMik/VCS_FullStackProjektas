@@ -12,8 +12,8 @@
             
             if (mysqli_num_rows($result) > 0){
                 $row = mysqli_fetch_assoc($result);
-                
-                $_SESSION["user_name"] = $user_name;
+                session_start();
+                $_SESSION["user_name"] = $row["user_name"];
                 $_SESSION["first_name"] = $row["name"];
                 $_SESSION["role"] = $row["role"];
                 echo "connected";

@@ -1,14 +1,23 @@
 <header>
     <div class="header-top container">
         <div class="header-top-child">
-            <a href="tel:+37069999999"><i class="medium material-icons">call</i></a>
-            <h3>+370 699 99999</h3>
+
+            <?php
+            $sql = "SELECT * FROM parameters where name = 'company_phone'";
+            $result = mysqli_query($conn, $sql);
+            if (mysqli_num_rows($result) > 0) {
+                $row = mysqli_fetch_assoc($result);
+                echo '<a href="tel:'. $row["value"] .'"><i class="medium material-icons">call</i></a>';
+                echo ' <h3>' . $row["value"] . '</h3>';
+            }
+            ?>
+
+            <!-- <a href="tel:+37069999999"><i class="medium material-icons">call</i></a>
+            <h3>+370 699 99999</h3> -->
         </div>
 
         <div class="header-top-child connection" id="connection">
             <i class="small material-icons">person</i>
-            <!-- <a class="connect-icon" data-position="bottom" data-tooltip="Prisijungti" href=""><i class="small material-icons">person</i></a> -->
-            <!-- <a class="connect-word" href="#">Prisijungti</a> -->
             <p class="connect-word">Prisijungti</p>
         </div>
 
