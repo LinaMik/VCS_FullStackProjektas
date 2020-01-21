@@ -68,7 +68,7 @@ if (document.getElementById("reg-form")) {
 
     let data = $(this).serialize();
     $.post("registration-result.php", data, function (result) {
-     
+
       switch (result) {
         case ("success"):
           alert("Jūsų registracija sėkminga!");
@@ -228,7 +228,7 @@ if (document.getElementById("new-acc-form")) {
 
     let data = $(this).serialize();
     $.post("new-account-result.php", data, function (result) {
-      
+
       switch (result) {
         case ("user_exists"):
           alert("Toks vartotojo vardas ar el.paštas jau egzistuoja!");
@@ -278,7 +278,7 @@ if (document.getElementById("connect")) {
 
     let data = $(this).serialize();
     $.post("connection.php", data, function (result) {
-     
+
       switch (result) {
         case ("connected"):
           window.location.href = "user_page.php";
@@ -321,70 +321,87 @@ let url = 'https://newsapi.org/v2/everything?' +
 ///////////////////////////////////////////////////////////////////
 //// ADMIN PUSLAPIS - LENTELIU KOREGAVIMAS
 
-if (document.getElementById("admin-table-select")) {
-  let adminBtn = document.getElementById("admin-btn");
-
-  adminBtn.style.display = "none";
-
-  let selectTable = document.getElementById("admin-table-select");
-  selectTable.addEventListener("change", function (e) {
-
-    if (e.target.value === "") {
-      adminBtn.style.display = "none";
-    } else {
-      adminBtn.style.display = "flex";
-    }
-  });
-};
-
-if (document.getElementById("admin-btn-add")) {
-  document.getElementById("admin-btn-add").addEventListener("click", function(){
-    let addForm = document.getElementById("admin-add-div");
-
-    if(addForm.classList.contains("hide-form")){
-      addForm.setAttribute("class"," ");
-      let tableName = document.getElementById("admin-table-select").value;
-      let data ="?table-name=" + tableName;
-      console.log(data);
-      $.post("admin_page.php", data);
-    } else {
-      addForm.setAttribute("class","hide-form");
-    }
-
-  });
-};
-
 //iraso pridejimas
 if (document.getElementById("form-add-row")) {
   document.getElementById("form-add-row").addEventListener("submit", function (event) {
 
     event.preventDefault();
     let tableName = document.getElementById("admin-table-select").value;
-    
+
     let data = $(this).serialize();
-    data +="&table-action=add&table-name=" + tableName;
-    $.post("admin-result.php", data, function (result) {
-     
-      switch (result) {
-        case ("success"):
-          alert("Naujas įrašas pridėtas!");
-          document.getElementById("form-add-row").reset();
-          break;
+    data +="&table-action=add&table-type=submit&table-name=" + tableName;
+    $.post("table_data.php", data, function (result) {
+      console.log(result);
+      // switch (result) {
+      //   case ("success"):
+      //     alert("Naujas įrašas pridėtas!");
+      //     document.getElementById("form-add-row").reset();
+      //     break;
 
-        case ("db_error"):
-          alert("Nepavyko pasiekti duomenų bazės! Bandykite dar kartą");
-          break;
+      //   case ("db_error"):
+      //     alert("Nepavyko pasiekti duomenų bazės! Bandykite dar kartą");
+      //     break;
 
-        case ("missing_data"):
-          alert("Užpildykite visus laukus!");
-          break;
+      //   case ("missing_data"):
+      //     alert("Užpildykite visus laukus!");
+      //     break;
 
-        default:
-          alert(result);
-      }
+      //   default:
+      //     alert(result);
+      // }
 
     })
 
   })
 }
+
+if (document.getElementById("admin-table-select")) {
+  let adminBtn = document.getElementById("admin-btn");
+
+  let selectTable = document.getElementById("admin-table-select");
+  selectTable.addEventListener("change", function (e) {
+    let table = e.target.value;
+    if (table === "") {
+      if (!adminBtn.classList.contains("hide-form")) {
+        $("#admin-btn").addClass("hide-form");
+        let forms = document.forms;
+        for (let i= 0; i < forms.length; i++){
+          forms[i].setAttribute("class","hide-form");
+        }
+      }
+    } else {
+      if (adminBtn.classList.contains("hide-form")) {
+        $("#admin-btn").removeClass("hide-form");
+      } else {
+        let forms = document.forms;
+        for (let i= 0; i < forms.length; i++){
+          forms[i].setAttribute("class","hide-form");
+        }      
+      }
+    }
+  });
+};
+
+if (document.getElementById("admin-btn-add")) {
+  document.getElementById("admin-btn-add").addEventListener("click", function () {
+
+      let tableName = document.getElementById("admin-table-select").value;
+
+      let data = { table_name: tableName, table_action: "add", table_type: "columns" };
+
+      $.post("table_data.php", data, function (result) {
+        let columns = JSON.parse(result);
+        let forma = '<form id="form-add-row" name="form-add-row">';
+        for (let i = 0; i < columns.length; i++) {
+          forma += '<input type="text" name="' + columns[i] + '" placeholder="' + columns[i] + '">';
+        }
+        forma += '<button class="btn blue-grey darken-1">Registruoti</button>';
+        forma += '</form>';
+        document.getElementById("admin-add-div").innerHTML = forma;
+      });
+
+  });
+};
+
+
 

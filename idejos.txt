@@ -9,7 +9,8 @@ ADMIN puslapis - ideti turinio valdyma - keisti, prideti, atnaujinti kintamuosiu
 Galimybe pakeisti paveikslelis. Galima style atributa prideti.
 
 freeCodeCamp - react
-computer sciencie 50, hardavrd universiteto programa - pasimokymui
+udemi - react - https://www.udemy.com/course/react-the-complete-guide-incl-redux
+computer sciencie 50, hardavrd universiteto programa - pasimokymui - nemokamas
 
 
 klausimai:

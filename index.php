@@ -104,7 +104,6 @@ include("head.php");
                     echo "<h6>" . trim($row["value"]) . "</h6>";
                 }
 
-
                 $param1 = ["company_code", "Įmonės kodas: "];
                 $param2 = ["company_address", "Adresas: "];
                 $param3 = ["company_phone", "Telefonas: "];
@@ -121,14 +120,6 @@ include("head.php");
                         echo $parameters[$i][1] . trim($row["value"]) . "<br>";
                     }
                 }
-
-
-
-                // echo "<p>Įmonės kodas: 300001236 <br>
-                //     Adresas: Naugarduko g. 97, Vilnius, LT-03202 <br>
-                //     Telefonas: +370 699 99999 <br>
-                //     El. paštas: info@aminta.lt <br>
-                // </p>";
                 echo "</p>";
                 ?>
             </div>

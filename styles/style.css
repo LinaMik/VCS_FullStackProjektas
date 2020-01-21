@@ -408,9 +408,7 @@ footer img, footer i.small {
     opacity: 1;
 }
 
-.hide-form {
-    display: none;
-}
+
 
 #new-acc-created {
     color: green;
@@ -427,4 +425,7 @@ footer img, footer i.small {
     margin: 10px 0;
 }
 
+.hide-form {
+    display: none;
+}
 
