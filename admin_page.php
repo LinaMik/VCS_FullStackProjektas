@@ -2,6 +2,7 @@
 <div class="container">
     <h4>PASIRINKITE LENTELĘ:</h4>
     <?php
+    //Sukriamas Select puslapyje pagal visas DB egzistuojančias lenteles
     $sql = "SELECT table_name FROM information_schema.tables
         WHERE table_schema = 'servisas'";
 
@@ -27,27 +28,10 @@
 
     <!-- Forma iraso pridejimui -->
     <div id="admin-add-div" class="">
-        <?php
-        // echo "gauta: ".$_POST["table-name"];
+    </div>
 
-        // if (isset($_POST["table-name"]) && !empty($_POST["table-name"])) {
-        // $table = trim($_POST["table-name"]);
-        // $sql = "SELECT column_name FROM information_schema.columns
-        //     WHERE table_schema = 'servisas' and table_name = '$table'";
-        // $sql = "SELECT column_name FROM information_schema.columns
-        //     WHERE table_schema = 'servisas' and table_name = 'user'";
-        // $result = mysqli_query($conn, $sql);
-
-        // if (mysqli_num_rows($result) > 0) {
-        //     echo '<form id="form-add-row" name="form-add-row">';
-        //     while ($row = mysqli_fetch_assoc($result)) {
-        //         echo '<input type="text" name="' . $row["column_name"] . '" placeholder="' . $row["column_name"] . '">';
-        //     }
-        //     echo '<button class="btn blue-grey darken-1">Registruoti</button>';
-        //     echo '</form>';
-        // }
-        // }
-        ?>
+    <!-- Forma irasu parodymui -->
+    <div id="admin-list-div" class="">
     </div>
 
 </div>

@@ -28,43 +28,72 @@ if (
             break;
 
         case $_POST["table_action"] === "add" && $_POST["table_type"] === "submit":
-            echo $_POST;
-            // $table_name = trim($_POST["table_name"]);
-            // $sql = "SELECT column_name FROM information_schema.columns
-            //     WHERE table_schema = 'servisas' and table_name = '$table_name'";
-            // $result = mysqli_query($conn, $sql);
 
-            // if (mysqli_num_rows($result) > 0) {
-            //     $columns = [];
-            //     while ($row = mysqli_fetch_assoc($result)) {
-            //         array_push($columns, $row["column_name"]);
-            //     }
+            $table_name = trim($_POST["table_name"]);
+            $sql = "SELECT column_name FROM information_schema.columns
+                WHERE table_schema = 'servisas' and table_name = '$table_name'";
+            $result = mysqli_query($conn, $sql);
 
-            //     $column_id = "";
-            //     $column_value = "";
-            //     for ($i = 0; $i < count($columns); $i++) {
-            //         if (empty($_POST["$columns[$i]"])) {
-            //             echo "missing_data";
-            //             return;
-            //         }
-            //         $column_id .= "," . $columns[$i];
-            //         $column_value .= ",'" . $_POST["$columns[$i]"] . "'";
-            //     }
+            if (mysqli_num_rows($result) > 0) {
+                $columns = [];
+                while ($row = mysqli_fetch_assoc($result)) {
+                    array_push($columns, $row["column_name"]);
+                }
 
-            //     $column_id = substr($column_id, 1);
-            //     $column_value = substr($column_value, 1);
+                $column_id = "";
+                $column_value = "";
+                for ($i = 0; $i < count($columns); $i++) {
+                    if (empty($_POST["$columns[$i]"])) {
+                        echo "missing_data";
+                        return;
+                    }
+                    $column_id .= "," . $columns[$i];
+                    $column_value .= ",'" . $_POST["$columns[$i]"] . "'";
+                }
 
-            //     $sql = "INSERT INTO $table_name ($column_id) VALUES ($column_value)";
+                $column_id = substr($column_id, 1);
+                $column_value = substr($column_value, 1);
 
-            //     if (mysqli_query($conn, $sql)) {
-            //         echo "success";
-            //     } else {
-            //         echo mysqli_error($conn);
-            //     }
+                $sql = "INSERT INTO $table_name ($column_id) VALUES ($column_value)";
 
-            // } else {
-            //     echo "db_error";
-            // }
+                if (mysqli_query($conn, $sql)) {
+                    echo "success";
+                } else {
+                    echo mysqli_error($conn);
+                }
+            } else {
+                echo "db_error";
+            }
+
+            break;
+
+        case $_POST["table_action"] === "list":
+
+            $table_name = trim($_POST["table_name"]);
+            $sql = "SELECT column_name FROM information_schema.columns
+                    WHERE table_schema = 'servisas' and table_name = '$table_name'";
+            $result = mysqli_query($conn, $sql);
+
+            if (mysqli_num_rows($result) > 0) {
+                $columns = [];
+                while ($row = mysqli_fetch_assoc($result)) {
+                    array_push($columns, $row["column_name"]);
+                }
+
+                $sql = "SELECT * FROM $table_name";
+                $result2 = mysqli_query($conn, $sql);
+                if (mysqli_num_rows($result2) > 0) {
+                   $json = array();
+                    while ($row = mysqli_fetch_assoc($result2)) {
+                        array_push($json, $row);
+                    }
+
+                    $jsonFile = json_encode($json);
+                    echo $jsonFile;
+                }
+            } else {
+                echo "db_error";
+            }
 
             break;
 

@@ -17,6 +17,7 @@ klausimai:
 
 3. Formos validacija - ar gerai irasyti funkciją tiesiog onclick? form submit
 4. kaip su sesija, kada uždaryti, kai vartotojas prisijunges?
+5. paprašyti dar paaiškinti tą nuburbuliavimą
 
 
 api key: b7e6cd453576479e954b8d80af83b405

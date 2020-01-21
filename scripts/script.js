@@ -321,40 +321,8 @@ let url = 'https://newsapi.org/v2/everything?' +
 ///////////////////////////////////////////////////////////////////
 //// ADMIN PUSLAPIS - LENTELIU KOREGAVIMAS
 
-//iraso pridejimas
-if (document.getElementById("form-add-row")) {
-  document.getElementById("form-add-row").addEventListener("submit", function (event) {
-
-    event.preventDefault();
-    let tableName = document.getElementById("admin-table-select").value;
-
-    let data = $(this).serialize();
-    data +="&table-action=add&table-type=submit&table-name=" + tableName;
-    $.post("table_data.php", data, function (result) {
-      console.log(result);
-      // switch (result) {
-      //   case ("success"):
-      //     alert("Naujas įrašas pridėtas!");
-      //     document.getElementById("form-add-row").reset();
-      //     break;
-
-      //   case ("db_error"):
-      //     alert("Nepavyko pasiekti duomenų bazės! Bandykite dar kartą");
-      //     break;
-
-      //   case ("missing_data"):
-      //     alert("Užpildykite visus laukus!");
-      //     break;
-
-      //   default:
-      //     alert(result);
-      // }
-
-    })
-
-  })
-}
-
+//Kai pasirenkama lentele iš saraso, parodomi mygtukai
+//Kaskart kai pasirenkama nauja lentele, tai uzslepiamos visos atidarytos formos
 if (document.getElementById("admin-table-select")) {
   let adminBtn = document.getElementById("admin-btn");
 
@@ -365,8 +333,8 @@ if (document.getElementById("admin-table-select")) {
       if (!adminBtn.classList.contains("hide-form")) {
         $("#admin-btn").addClass("hide-form");
         let forms = document.forms;
-        for (let i= 0; i < forms.length; i++){
-          forms[i].setAttribute("class","hide-form");
+        for (let i = 0; i < forms.length; i++) {
+          forms[i].setAttribute("class", "hide-form");
         }
       }
     } else {
@@ -374,34 +342,106 @@ if (document.getElementById("admin-table-select")) {
         $("#admin-btn").removeClass("hide-form");
       } else {
         let forms = document.forms;
-        for (let i= 0; i < forms.length; i++){
-          forms[i].setAttribute("class","hide-form");
-        }      
+        for (let i = 0; i < forms.length; i++) {
+          forms[i].setAttribute("class", "hide-form");
+        }
       }
     }
   });
 };
 
+//Kai spaudziamas mygtukas "Prideti", tai sukuriama forma pagal pasirinktos lenteles stulpelius
 if (document.getElementById("admin-btn-add")) {
   document.getElementById("admin-btn-add").addEventListener("click", function () {
 
-      let tableName = document.getElementById("admin-table-select").value;
+    let forms = document.forms;
+    for (let i = 0; i < forms.length; i++) {
+      if (!forms["form-add-row"]) {
+        forms[i].setAttribute("class", "hide-form");
+      }
+    }
 
-      let data = { table_name: tableName, table_action: "add", table_type: "columns" };
+    document.getElementById("admin-list-div").setAttribute("class", "hide-form");
 
-      $.post("table_data.php", data, function (result) {
-        let columns = JSON.parse(result);
-        let forma = '<form id="form-add-row" name="form-add-row">';
-        for (let i = 0; i < columns.length; i++) {
-          forma += '<input type="text" name="' + columns[i] + '" placeholder="' + columns[i] + '">';
-        }
-        forma += '<button class="btn blue-grey darken-1">Registruoti</button>';
-        forma += '</form>';
-        document.getElementById("admin-add-div").innerHTML = forma;
-      });
+    let tableName = document.getElementById("admin-table-select").value;
+
+    let data = { table_name: tableName, table_action: "add", table_type: "columns" };
+
+    $.post("table_data.php", data, function (result) {
+      let columns = JSON.parse(result);
+      let forma = '<form id="form-add-row" name="form-add-row">';
+      for (let i = 0; i < columns.length; i++) {
+        forma += '<input type="text" name="' + columns[i] + '" placeholder="' + columns[i] + '">';
+      }
+      forma += '<button class="btn blue-grey darken-1">Registruoti</button>';
+      forma += '</form>';
+      document.getElementById("admin-add-div").innerHTML = forma;
+    });
 
   });
 };
 
 
+//iraso pridejimas
+//Nuburbuliavimas - Event Delegation
+//Prisegamas Event'as formai, kuri dar nebuvo sukurta
+if ($("#admin-add-div")) {
+  $("#admin-add-div").on("submit", "form", function (event) {
+    event.preventDefault();
+    let tableName = document.getElementById("admin-table-select").value;
 
+    let data = $(this).serialize();
+    data += "&table_action=add&table_type=submit&table_name=" + tableName;
+    $.post("table_data.php", data, function (result) {
+      switch (result) {
+        case ("success"):
+          alert("Naujas įrašas pridėtas!");
+          document.getElementById("form-add-row").reset();
+          break;
+
+        case ("db_error"):
+          alert("Nepavyko pasiekti duomenų bazės! Bandykite dar kartą");
+          break;
+
+        case ("missing_data"):
+          alert("Užpildykite visus laukus!");
+          break;
+
+        default:
+          alert(result);
+      }
+    })
+  })
+}
+
+
+//Kai spaudziamas mygtukas "Peržiūrėti"
+if (document.getElementById("admin-btn-list")) {
+  document.getElementById("admin-btn-list").addEventListener("click", function () {
+    document.getElementById("admin-list-div").setAttribute("class", " ");
+    let forms = document.forms;
+    for (let i = 0; i < forms.length; i++) {
+        forms[i].setAttribute("class", "hide-form");
+    }
+
+    let tableName = document.getElementById("admin-table-select").value;
+
+    let data = { table_name: tableName, table_action: "list"};
+
+    $.post("table_data.php", data, function (result) {
+      let data = JSON.parse(result);
+      data_list = "<ul>"
+
+      for (key in data) {
+        data_list += "<li>";
+        for (key2 in data[key]){
+          data_list += "<span>" + key2 + " </span> " + data[key][key2] + "; ";
+        }
+        data_list += "</li><hr>";
+      }
+      data_list += "</ul>"
+      document.getElementById("admin-list-div").innerHTML = data_list;
+    });
+
+  });
+};
